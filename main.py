@@ -18,6 +18,9 @@ def say_stuff():
         except:
             print('You didn\'t say anthing as far as I know')
 
+
+# makes an infinite loop so that you can say stuff as many times as you want.
+# type in 0 to stop the program or 1 to see how program recognizes what you're saying.
 choice = ""
 while choice != '0':
     print("Type in 1 for the program to transcribe stuff")
