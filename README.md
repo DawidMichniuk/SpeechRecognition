@@ -19,3 +19,7 @@ After that's done, install speech_recognition:
 ## Example of how the program looks
 
 ![Output](https://i.imgur.com/z4Jigfb.png "Output")
+
+## References
+
+This program is based on <https://www.youtube.com/watch?v=K_WbsFrPUCk>
