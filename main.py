@@ -14,18 +14,18 @@ def say_stuff():
 
         try:
             text = r.recognize_google(audio)
-            print('You said {}'. format(text))
+            print("You said: '{}'\n". format(text))
         except:
-            print('You didn\'t say anthing as far as I know')
+            print('I didn\'t catch that.\n')
 
 
 # makes an infinite loop so that you can say stuff as many times as you want.
 # type in 0 to stop the program or 1 to see how program recognizes what you're saying.
 choice = ""
 while choice != '0':
-    print("Type in 1 for the program to transcribe stuff")
-    print("0 to exit the program")
-    choice = input()
+    print("1. Speech Recognition")
+    print("0. Exit the program\n")
+    choice = input('Option: ')
 
     if choice == '1':
         say_stuff()
