@@ -1,12 +1,33 @@
 import speech_recognition as sr
 import sys # to exit the program
 import random # for the number guessing game
+import time # for background listening
 
 # this tries to recognise what's being said, where as "source" is what's captured by microphone
 r = sr.Recognizer()
 
 #set the default value for language to american english
 lang = "en_US"
+
+def callback(recognizer, audio):
+    # received audio data, now we'll recognize it using Google Speech Recognition
+    try:
+        text = recognizer.recognize_google(audio)
+        print("Google Speech Recognition thinks you said: {}\n". format(text))
+    except:
+        print("Google Speech Recognition could not understand audio\n")
+
+def listen_in_the_background():
+    m = sr.Microphone()
+    with m as source:
+        r.adjust_for_ambient_noise(source)  # we only need to calibrate once, before we start listenin
+    print("OK, I'm listening now")
+
+    #audio is the stuff that's recorded
+    stop_listening = r.listen_in_background(m, callback)
+
+    time.sleep(5) # sleep 5 seconds
+    stop_listening(wait_for_stop=False)
 
 #capture the audio mate
 def say_stuff():
@@ -40,7 +61,7 @@ def game():
                     print("You won!\n")
                     print("The number I though of was: " + random_number)
                     print("And you said: " + text)
-                    return
+                    break # return somehow triggeres the except clause
                 elif random_number > text:
                     print("Your number is smaller than what I'm thinking\n")
                 elif random_number < text:
@@ -75,6 +96,7 @@ while choice != '0':
     print("1. Speech Recognition")
     print("2. Pick your language")
     print("3. Play a guessing game")
+    print("4. Listen in the background")
     print("0. Exit the program\n")
     choice = input('Option: ')
 
@@ -85,6 +107,8 @@ while choice != '0':
         pick_language(name)
     elif choice == '3':
         game()
+    elif choice == '4':
+        listen_in_the_background()
     elif choice == '0':
         print('Buh-bye!')
     else:
