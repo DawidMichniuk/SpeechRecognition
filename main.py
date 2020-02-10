@@ -85,7 +85,13 @@ def pick_language(name):
         'french': 'fr-FR',
         'russian': 'ru-RU',
         'italian': 'it-IT',
-        'portugese': 'pt-PT'
+        'portugese': 'pt-PT',
+        'arabic': 'ar-AE', #goes from left to right
+        'urdu': 'ur-PK', #goes from left to right, TODO: FIX
+        'turkish': 'tr-TR',
+        'bulgarian': 'bg-BG',
+        'czech': 'cs-CZ',
+        'greek': 'el-GR'
     }
     if name in languages:
         lang = languages[name]
