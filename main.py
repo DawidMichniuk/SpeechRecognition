@@ -17,6 +17,7 @@ def callback(recognizer, audio):
     except:
         print("Google Speech Recognition could not understand audio\n")
 
+# doesn't quite work as good as I want it to work.
 def listen_in_the_background():
     m = sr.Microphone()
     with m as source:
@@ -26,8 +27,12 @@ def listen_in_the_background():
     #audio is the stuff that's recorded
     stop_listening = r.listen_in_background(m, callback)
 
-    time.sleep(5) # sleep 5 seconds
-    stop_listening(wait_for_stop=False)
+    #listen as long as you want, press enter to stop recording.
+    choice = "is just an illusion"
+    while choice != "":
+        choice = input("Press enter to stop recording:")
+        if choice == "":
+            stop_listening(wait_for_stop=False)
 
 #capture the audio mate
 def say_stuff():
